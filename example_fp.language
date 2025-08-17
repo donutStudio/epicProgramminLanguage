@@ -1,0 +1,170 @@
+// Single line comment
+
+/* Multi
+line
+comment */
+
+// Variable initialization examples
+
+byte bit8 = 127;
+short bit16 = 32767;
+int bit32 = 2147483647;
+long bit64 = 9223372036854775807;
+
+float singlePrecision = 0.66667; // up to 32 bits of precision, just like floats in other languages
+double doublePrecision = 0.33333333333333; // up to 64 bits of precision, just like doubles in other languages
+
+bool bit1 = true;
+
+char firstInitial = 'T';
+string fullName = "Teja Danturti"; // strings are technically an object but we don't need to worry about that for now
+
+// I may have forgotten some other data types but assume that all standard programming types exist in this language
+
+// Null initializations
+
+bool nullBoolean; // Not assigning any value to begin with makes it null
+
+int nullInteger = null; // You can also actually set it to `null` if you would like, but it makes no difference
+
+// Assignment
+
+bit8 = -128; // Setting value of variable `bit8` directly to -128
+bit8 += 64; // Add 64 to bit8 value
+// Assume all arithmetic works like other languages, etc +=, -=, *=, /=, % (modulo), //, **, ++, --, etc etc
+// Everything will follow order of operations by default
+// Variables work like any other language- we can add them to other variables, etc etc.
+
+// Conditionals
+
+bit8 == -64; // This works as a standalone line, but it is inherently pointless to do so in most cases
+
+if (bit32 >= 0;) {
+	print("positive";);
+}
+
+// Just like how I explained, everything visually separated by semicolons, even in conditionals, is a valid piece of code. For example, this works:
+
+if (int y = bit8; y += 128; y == 64;) {
+	print("y is 64";);
+}
+
+// Although a better way to write it would just be:
+
+if (bit8 + 128 == 64;) {
+	print ("bit8 + 128 is 64";); // Which would compare the value of bit8 + 128 to 64 without actually changing the value of bit8. 
+}
+
+if (bit8 += 128; bit8 == 64;) {
+	print("bit8 is 64";); // Here, notice how we actually added 128 to the value of bit8 and compared it. All boolean checks, eg `bit8 == 64` or `variable == 3 && variable2 == 10`, even if they are separated by semicolons in the conditional must evaluate to true for the code to run
+}
+
+if (bit1;) {
+	print("bit1 is true";); // just like other languages, a boolean expression with a boolean value without an == will just assume it to be true
+}
+
+if (!bit1;) {
+	print("bit1 is false";); // again just like how I explained earlier. Can also be aliased as `if (not bit1;) {...}
+}
+
+// All logical operators like and, or, and not are synonyms with their respective symbols like &&, ||, and ! respectively (along with all other logical operators) and can be used interchangeably
+
+int a = 1; int b = 2; int c = 3;
+
+// This is an example of a complex boolean expression
+
+(a == 1 || b == 2) && c == 3;
+
+// The parentheses indicate order, it will first see if a is 1 or b is 2, then if that condition is true and if c is 3 it will return true overall. This still counts as one singular boolean expression, and I will use it in code now
+
+if ((a == 1 || b == 2) && c == 3;) {
+	// do stuff
+} else if {fullName == "Teja Danturti";} { // notice the else if syntax
+	// do stuff
+} else { // and the `else` syntax
+	// do stuff
+}
+
+// I just compared a string using `==`. I do not know how I will actually handle this in the real compiled language, but for now just treat a string like a primitive type despite it being an object. In fact, all primitive types will be objects, but some just wont have any actual behavior (this is so the compiler knows that if a line starts with an object/class name it is creating a variable/instance of that object)
+
+// Loops
+
+// while loops will again use this same consistent syntax
+
+int x = 10;
+
+while (x > 0;) {
+	x--;
+}
+
+// we can also technically make a for loop using the same semicolon separation system using while loops
+
+while (short counter = 0; counter <= 10; counter++;) {
+	// do stuff
+}
+
+// this can also be written as a for loop, but a for loop will just have a far more rigid syntax. it will look the same but with the word `while` changed to `for`. however this for keyword can only be used in vey specific structures like the one above
+
+for (int i = 0; i <= 10; i++;) {
+	// do stuff
+}
+
+// while loops can also use the 'else' clauses-
+
+while (x > 0;) {
+	// do stuff
+} else while (x > -5;) {
+	// do stuff
+} else {
+	// do stuff
+}
+
+// functions
+
+// so far the only builtin function I will have for now be print. here is an example:
+
+print("Hello World";); // just like other languages, print does not necessarily have to take a string
+// we also allow keyword arguments
+print(message = "Hello World";);
+
+// function definition
+
+function max(int param1; int param2;) {
+	if (param1 > param2;) {
+		return int param1;
+	} else if (param2 > param1;) {
+		return int param2;
+	} else {
+		return null; // also just putting `return;` with no type returns null. In general, functions do not require you to specify return type in their definition, just only when using a return statement to support dynamic return types or no return types at all. I will make some code to throw errors later, for now no error system yet
+	}
+}
+
+max(4; 5;); /* returns 5 */ max(7; 6;); /* returns 7 */ max(3; 3;); // returns null
+
+// just like other languages, variables can be set to functions if they return something
+
+int biggerNumber = max(9; 10;);
+
+function addNums(int num1; int num2; bool reverse = false;) { // we have assigned a false value to the bool reverse, so the parameter can now be omitted and it will default to false
+	if (!reverse;) {
+		return int num1 + num2;
+	} else {
+		return int num1 - num2;
+	}
+}
+
+addNums(3; 4; false;); // returns 7
+addNums(3; 4;); // still returns 7 because omition of the reverse parameter makes the code assume a default value of false thanks to the parameter definition
+addNums(3; 4; true;); // returns negative 1, because now we have set reverse to true
+addNums(num1 = 3; num2 = 3;); // keyword arguments example
+
+// in functions where positional arguments might not make sense if some are to be omitted, then you can still use keyword arguments to do it
+
+// it is important to also note that ANYTHING in this programming separated by semicolons, eg function parameters, while loop arguments, conditional arguments, etc etc is treated like an actual line of code. for things like conditions, remember that just writing a conditional statement is still considered valid code by this language- in fact, just entering a number value like:
+
+3; // this is still valid code, as all this is is just a value
+false; // this is valid as well
+"epic"; // also valid
+2 + 3; // still valid and is 5
+
+// also, a function call can be made in the script before a function is defined (so we can still have function definitions at the bottom but have function calls before them). for now, we will implement this functionality while still keeping this language interpreted in python, but later on we will switch to a compiler

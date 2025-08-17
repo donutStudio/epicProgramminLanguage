@@ -1,0 +1,58 @@
+// Just some example code to play around with using the features that do work for now, I will update this language more in the future
+
+int x = 15;
+
+print(x*2;);
+
+for (int i = 0; i <= x; i++;) {
+    print("i = " + i;);
+}
+
+print("\n";);
+
+if (x < 15;) {
+    print(x+1;);
+} else {
+    print(x-1;);
+}
+
+myFunction("Hello World";); // This should return "Hello World, 10" because in the function definition we set int num to a default value of 10 if omitted
+myFunction("Goodbye World"; 101;);
+
+function myFunction(string message; int num = 10;) {
+    print(message + ", " + num;);
+}
+
+function max(int a; int b;) {
+    if (a > b;) {
+        return int a;
+    } else if (b > a;) {
+        return int b;
+    } else {
+        return null;
+    }
+}
+
+print(max(3; 6;) + " " + max(7; 1;););
+
+print(max(4; 4;););
+
+double n = -127.001;
+
+print(n;);
+
+/* while (false;) {
+    print("While loops are still bugged, using them causes the program to wait indefinetely even if the loop breaks";);
+    print("What is even more strange is that in my code, a for loop is just supposed to be syntactic sugar for a while loop, yet the for loops work;";)
+}*/
+
+if (int y = 10; y == 10;) {
+    print("Isn't this cool how statements can be put in to any control structure";);
+}
+
+/* The reason I semicolon separate all things is that in anything, from function parameters to arguments in control structures like 
+conditionals is because actually each thing acts as a real runnable statement, a piece of code. (yes, `y == 10;` is a valid piece of code).
+This allows for more flexibility, as you saw in my function I could just initialize a paramter to a certain value just like a variable
+declaration syntax and it would work the same and provide a default value. Theoretically, you can fit any single statement of code into a 
+semicolon separated argument. This also allows for a lot of internal consistency in the language (especially because languages like C++ and 
+Java semicolon separate for for loops but nothing else)*/
